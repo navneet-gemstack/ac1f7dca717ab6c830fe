@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Back', questions_path %>
+
+
+<p>
+	<strong>Body:</strong>
+	<%= @question.body %>
+</p>
+
+<div>
+	<%if @question.answers.count>0%>
+	<ol>
+		<%@question.answers.each do |answers|%>
+		<li class="answer"><%=answers.body%></li>
+		<%end%>
+	</ol> 
+	<%else%>
+	<h2>There are no answers yet</h2>
+	<%end%>
+
+
+</div>
+
+
+
+<%= render 'answers/form', question: @question %>

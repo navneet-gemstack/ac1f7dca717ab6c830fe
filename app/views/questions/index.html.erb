@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Questions</h1>
+<%= link_to 'New Question', new_question_path %>
+<%= link_to 'New Topic', new_topic_path %>
+
+<br>
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Question</th>
+      <th>Topic</th>
+      <th>User-Email</th>
+      <th>Follow Topic</th>
+      <th>Follow User</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each_with_index do |question,index| %>
+    <tr>
+      <td><%= index+1 %></td>
+      <td><%= link_to "#{question.body}",question,class: "question"%></td>
+      <td><%= question.topic.body %></td>
+      <td><%= question.user.email %></td>
+      <td><%= link_to "Follow Topic ~> #{question.topic.body}", follow_topic_topic_path(question.topic.id), class: "follow_topic"%></td>
+      <td><%= link_to "Follow User ~> #{question.user.email}", follow_user_user_path(question.user.id), class: "follow_user"%></td>      
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
